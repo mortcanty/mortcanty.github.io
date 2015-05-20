@@ -1,0 +1,130 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<style type="text/css">
+h2 { color: green }
+</style>
+
+<head>
+        <title>Image analysis with Python</title>
+        <meta name="description" content="Remote sensing digital image processing, Python">
+        <meta name="keywords" content= "Mort Canty, remote sensing, Python, image processing, classification, change detection">
+        
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="icon" type="image/gif" href="animated_favicon1.gif">
+</head>
+
+<body>
+
+<h1>Remote Sensing Image Analysis with Python <br />
+ZFL Bonn, March/April 2015</h1> 
+<h3>
+<a href="contact.html">Mort Canty</a>
+</h3>
+
+
+<h2>Software Installation on Windows</h2>
+
+
+<h3>Python</h3>
+
+Download and install <a href="https://code.google.com/p/pythonxy/wiki/Downloads">version 2.7.9 of Python(x,y) for Windows</a>
+
+<h3>My Scripts</h3>
+
+Download the <a href="http://mortcanty.github.io/CRCPython/"> Zip archive</a> from my CRCPython Git repository and unpack.<br />
+Alternatively, if you are familiar with <a href="http://git-scm.com/">Git</a>, you can clone the repository.<br />
+Execute <b>..\CRC\auxil\dist\auxil-1.1.win32.exe</b> to install my <b>auxil</b> Python package.<br />
+Copy the file <b>..\provmeans\windows 32bit\prov_means.dll</b> to your Windows directory.<br />
+You will also need the mlpy package, which you can get <a href="https://drive.google.com/file/d/0B7IDSHlM4SgEWXFtQ3M4aGVseGM/view?usp=sharing">here</a>,
+and the pyshp package,  <a href="https://drive.google.com/file/d/0B7IDSHlM4SgETWttbF93UmcySDg/view?usp=sharing">here</a>.
+<br />
+<br />
+ 
+Test your installation: cd to <b>..\CRC\src\CHAPTER1</b> and run <b>python ex1_5.py</b>
+
+<p>
+The follow-along IPython notebooks and scripts can be downloaded <a href="https://drive.google.com/file/d/0B7IDSHlM4SgEc2o2LUZJcVlzVG8/view?usp=sharing">here</a>.
+</p>
+
+<h2>Recommended Reading</h2>
+
+
+Langtangen (2009) <a href="http://www.amazon.de/Python-Scripting-Computational-Science-Engineering/dp/3540739157/ref=sr_1_1?ie=UTF8&qid=1423928461&sr=8-1&keywords=python+scripting+for+computational+science">
+Python Scripting for Computational Science</a><br />
+Canty (2014) <a href="http://www.amazon.com/Analysis-Classification-Change-Detection-Sensing/dp/1466570377/ref=dp_ob_title_bk">Image Analysis, Classification and Change Detection in Remote Sensing<a/><br />
+Westra (2013) <a href="http://www.amazon.com/Python-Geospatial-Development-Erik-Westra/dp/178216152X/ref=sr_1_1?s=books&ie=UTF8&qid=1423928673&sr=1-1&keywords=python+geospatial+development+-+second+edition">
+Python Geospatial Development</a><br />
+Rossant (2013) <a href="http://www.amazon.com/Learning-IPython-Interactive-Computing-Visualization/dp/1782169938/ref=sr_1_1?s=books&ie=UTF8&qid=1423928878&sr=1-1&keywords=learning+ipython+for+interactive+computing+and+data+visualization">
+Learning IPython for Interactive Computing and Data Visualization</a>
+
+<h2>Web Resources</h2>
+
+<a href="http://ms-image-analysis.appspot.com/static/homepage/software.html">My software page</a><br />
+<a href="http://scipy.org/docs.html">Numpy and Scipy documentation</a><br />
+<a href="http://www.gdal.org/">GDAL (Geospatial Data Abstraction Library)</a><br />
+<a href="http://trac.osgeo.org/gdal/wiki/GdalOgrInPython">GDAL/OGR in Python</a><br />
+<a href="http://pcjericks.github.io/py-gdalogr-cookbook/">Python GDAL/OGR Cookbook</a>
+
+<h2>Course Summary</h2>
+
+<h3>Python Integrated Development Environments (IDEs)</h3>
+
+<p>IDLE</p>
+<p>Eclipse/Pydev</p>
+<p>IPython</p>
+<p>IPython Notebook</p>
+
+<h3>Introduction to Python</h3>
+
+<p>Hello World!</p>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">#!/usr/bin/env python</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">sys</span><span style="color: #333333">,</span><span style="color: #0e84b5; font-weight: bold">math</span>
+r <span style="color: #333333">=</span> <span style="color: #007020">float</span>(sys<span style="color: #333333">.</span>argv[<span style="color: #0000DD; font-weight: bold">1</span>])
+s <span style="color: #333333">=</span> math<span style="color: #333333">.</span>sin(r)
+<span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&#39;Hello World! sin(</span><span style="background-color: #eeeeee">%f</span><span style="background-color: #fff0f0">)=</span><span style="background-color: #eeeeee">%f</span><span style="background-color: #fff0f0">&#39;</span><span style="color: #333333">%</span>(r,s)
+</pre></div>
+
+<p>Basic syntax and namespaces</p>
+<p>Variables, lists, tuples, dictionaries</p>
+<p>Functions, parameters, keywords, scope</p>
+<p>String processing</p>
+<p>Input/output</p>
+<p>Classes and OOP</p>
+
+<h3>Exceptions and Debugging</h3> 
+
+<p>Exceptions, try/except/finally blocks</p>
+<p>debugging in IPython</p>
+
+<h3>Array-Oriented Computing</h3>
+
+<p>Numpy arrays (ndarray)</p>
+<p>Vectorized computation</p>
+<p>Slicing</p>
+<p>Matrices</p>
+<p>Linear algebra</p>
+<p>Scipy</p>
+
+<h3>GDAL</h3>
+<p>Command line functions</p>
+<p>Reading and writing raster images</p>
+<p>Geo-transforms</p>
+<p>Vector data, ESRI shapefiles</p>
+
+<h3>Python Scripts for Image Analysis</h3>
+
+<p>Principal components</p>
+<p>Corner detection, Canny edges</p>
+<p>Pan-sharpening</p>
+<p>Solar incidence angle correction</p>
+<p>Clustering</p>
+<p>Supervised classification</p>
+<p>Parallel computing for cross-validation</p>
+<p>Change detection</p>
+<p>Radiometric normalization</p>
+
+
+
+
+</body>
