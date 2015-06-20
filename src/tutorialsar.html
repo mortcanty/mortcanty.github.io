@@ -207,7 +207,7 @@ div#notebook {
 <li>Click on this tutorial, or open a new notebook with <strong>New/Python 2</strong>.</li>
 </ol>
 <p>On WIndows (or Mac), <a href="https://docs.docker.com/installation/windows/">install boot2docker</a>, share your image directory with VirtualBox and proceed from step 2. above.</p>
-<p>Here is a listing of the home directory <strong>/sar</strong> in the container:</p>
+<p>Here is a listing of the main directory <strong>/sar</strong> in the container:</p>
 
 </div>
 </div>
@@ -308,7 +308,7 @@ drwxrwxrwx 1 root root    0 Sep 17  2014 <span class="ansiblue">dem</span>/
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The images are level one SLC (single look complex format). For example, here are the contents of the image directory corresponding to acquistion date 20100426 (April 24, 2010):</p>
+<p>The images are level one SLC (single look complex format). For example, here are the contents of the image directory corresponding to acquistion date 20100426 (April 26, 2010):</p>
 
 </div>
 </div>
@@ -363,7 +363,7 @@ drwxrwxrwx 1 root root        0 Sep 17  2014 <span class="ansiblue">schemas</spa
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The four polarization combinations HH, HV,VH and VV are are stored as complex numbers in GeoTiff format. The subdirectory T3 contains the polarimetric coherency matrix elements generated from the polarization combinations by PolSARpro. This is discussed below in the Section in the processing chain. They are in ENVI format. There is also a RGB color Pauli decomposition image in BMP format:</p>
+<p>The four polarization combinations HH, HV,VH and VV are are stored as complex numbers in GeoTiff format. The subdirectory T3 contains the polarimetric coherency matrix elements generated from the polarization combinations by the PolSARpro software. This is discussed below in the Section on the processing chain. The image files are now in ENVI format. There is also an RGB colour Pauli decomposition image in BMP format:</p>
 
 </div>
 </div>
@@ -446,23 +446,20 @@ The per-pixel polarimetric information in the scattering matrix $S$, under the a
 of reciprocity ($S_{hv} = S_{vh}$), can then be expressed as a three-component complex vectors</p>
 $$
 s = \pmatrix{S_{hh}\cr \sqrt{2}S_{hv}\cr S_{vv}},
-$$<p>where the $\sqrt{2}$ ensures that the total intensity (received signal power) is consistent. It is essentially these vectors which are provided in the SLC level one data discussed above. The total intensity is referred to as the <em>span</em>,</p>
+$$<p>where the $\sqrt{2}$ ensures that the total intensity (received signal power) is consistent. It is essentially these vectors which are provided in the SLC level one data discussed above. The total intensity is referred to as the <em>span</em> and is the complex inner product of the vector $s$,</p>
 $$
-{\rm span} = s^\top s = |S_{hh}|^2 + 2|S_{hv}|^2 + |S_{vv}|^2,
-$$<p>and the corresponding gray-scale image as the <em>span image</em>. The observation vector $s$ can be shown
-to be a realization of a complex multivariate normal random variable. An equivalent and often preferred representation is interms of the vector</p>
+{\rm span} = s^\top s = |S_{hh}|^2 + 2|S_{hv}|^2 + |S_{vv}|^2.
+$$<p>This is a real number and the corresponding gray-scale image is called the <em>span image</em>. The observation vector $s$ can be shown to be a realization of a complex multivariate normal random variable. An equivalent and often preferred representation is interms of the <em>coherency vector</em></p>
 $$
 k = {1\over\sqrt{2}}\pmatrix{S_{hh} + S_{vv}\cr S_{hh} - S_{vv} \cr 2S_{hv}}.
-$$<p>Another representation of the polarimetric signal is  obtained by taking
-the complex outer product of $s$ with itself:</p>
+$$<p>The polarimetric signal is  can also be represented by taking the complex outer product of $s$ with itself:</p>
 $$
 C = s s^\top = \pmatrix{ |S_{hh}|^2 & \sqrt{2}S_{hh}S_{hv}^* & S_{hh}S_{vv}^* \cr
                                      \sqrt{2}S_{hv}S_{hh}^* & 2|S_{hv}|^2 & \sqrt{2}S_{hv}S_{vv}^* \cr
                                      S_{vv}S_{hh}^* & \sqrt{2}S_{vv}S_{hv}^* & |S_{vv}|^2 }.
 $$<p>The diagonal elements of $C$ are real numbers, with span $= {\rm tr}(C)$, and the off-diagonal
 elements are complex. This matrix representation contains all of the information in the polarized signal.
-It can be averaged over the number of looks (number of adjacent cells used to average out the effect of speckle) to give the
-per-pixel covariance matrix</p>
+It can be averaged over the number of looks (number of adjacent cells used to average out the effect of speckle) to give an estimate of the covariance matrix of a multi-look pixel:</p>
 $$
 \bar{C}  ={1\over m}\sum_{\nu=1}^m  s(\nu) s(\nu)^\top = \langle  s s^\top \rangle
  = \pmatrix{ \langle |S_{hh}|^2\rangle & \langle\sqrt{2}S_{hh}S_{hv}^*\rangle & \langle S_{hh}S_{vv}^*\rangle \cr
@@ -471,15 +468,14 @@ $$
 $$<p>where $m$ is the number of looks. This matrix (or rather the equivalent coherency matrix $\langle  k k^\top \rangle$) is generated by PolSARpro and stored in the subdirectory T3 which we listed in a previous cell.  Rewriting the first of the above equations,</p>
 $$
 m\bar{C} = \sum_{\nu=1}^m  s(\nu) s(\nu)^\top =:  x.
-$$<p>This is a realization of a complex sample matrix which is known to have
+$$<p>This quantity $x$ is a realization of a complex sample matrix which is known to have
 a complex Wishart distribution with $N\times N$ covariance matrix $\Sigma$ (here $N=3$) and $m$ degrees of freedom:</p>
 $$
 p_{W_c}( x) ={|x|^{(m-N)}\exp(-{\rm tr}(\Sigma^{-1} x)) \over
 \pi^{N(N-1)/2}|\Sigma|^{m}\prod_{i=1}^N\Gamma(m+1-i)},\quad m \ge N,
 $$<p>provided that the vectors $s(\nu)$ are independent and drawn from a complex multivariate normal
-distribution. However the $s(\nu)$  will generally be correlated.
-In order to account for this, the complex Wishart distribution is often parameterized with the equivalent number of looks
-ENL (rather than $m$) degrees of freedom.</p>
+distribution. However when multi-look averaging takes place, the $s(\nu)$  will generally be correlated somewhat.
+In order to account for this, the complex Wishart distribution is often parameterized with the equivalent number of looks ENL (rather than $m$) degrees of freedom. This quantity can be estimated from the image itself.</p>
 <p>The scattering vector given above corresponds to so-called full, or <em>quad polarimetric</em> SAR.
 Satellite-based SAR sensors often operate in reduced, power-saving polarization modes, emitting only one polarization and receiving
 two (dual polarization) or one (single polarization). The look-averaged covariance matrices are reduced in dimension
@@ -505,7 +501,7 @@ polSAR image in covariance matrix format by $\bar C$, where</p>
 $$
 m\bar C =  x = \sum_{\nu=1}^m  s(\nu) s(\nu)^\top
 $$<p>is a realization of a random matrix $X$ with a complex Wishart distribution.
-The following is discussion is based on <a href="http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=1219">Conradasen et al (2004)</a>.</p>
+The following is discussion is based on <a href="http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=1219">Conradsen et al (2004)</a>.</p>
 <p>We define the null (or no-change) simple  hypothesis</p>
 $$
 H_0:\quad \Sigma_1 = \Sigma_2 = \Sigma,
@@ -522,7 +518,7 @@ L(\hat\Sigma_1,\hat\Sigma_2) = { |x_1|^{m-3}|x_2|^{m-3}\exp(-2m\cdot{\rm tr}(I))
 $$<p>Then the <strong>likelihood ratio test</strong> has the critical region for rejection of the no-change hypothesis</p>
 $$
 Q = {L(\hat\Sigma) \over L(\hat\Sigma_1,\hat\Sigma_2) } = 2^{6m}{ |x_1|^m |x_2|^m \over |x_1 + x_2|^{2m} } \le k.
-$$<p>One can derive (<a href="http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=1219">Conradasen et al (2004)</a>) the following approximation for the statistical distribution of the test statistic $Q$:</p>
+$$<p>One can derive (<a href="http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=1219">Conradsen et al (2004)</a>) the following approximation for the statistical distribution of the test statistic $Q$:</p>
 $$
 {\rm prob}(-2\rho\log Q\le z) \simeq P_{\chi^2;N^2}(z) + \omega_2\left[ P_{\chi^2;N^2+4}(z) - P_{\chi^2;N^2}(z) \right],
 $$<p>where $P_{\chi^2;m}(z)$ is the chi square distribution wth m degrees of freedom,
@@ -545,20 +541,19 @@ $$<p>and interpret all pixels with larger values of $-2\rho\log Q$ as change.</p
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A-Processing-Chain">A Processing Chain<a class="anchor-link" href="#A-Processing-Chain">&#182;</a></h2><p>The change detection scripts require the following processing sequence in order to generate a change map from two
-polarimetric SAR images available at the single look complex (SLC) processing level:</p>
+<h2 id="A-Processing-Chain">A Processing Chain<a class="anchor-link" href="#A-Processing-Chain">&#182;</a></h2><p>The change detection method implies the following processing sequence in order to generate a change map from two
+polarimetric SAR images provided at the single look complex (SLC) processing level:</p>
 <ol>
 <li><p>First of all two multi-look polarimetric SAR images in covariance or coherency matrix format are generated from the SLC data
 with the open source software package <a href="https://earth.esa.int/web/polsarpro/home">PolSARpro</a> (European Space agency).
-Presently this must be done outside of the Docker container (and IPython) since polSARpro is presently only available in the form of 32-bit Linux binaries. The coherenecy matrix has the same eigenvalues and hence the same determinant as the covariance matrix, so that the hypothesis test can be applied unchanged. The rest of the processing takes place in the IPython notebook.</p>
+Presently this must be done outside of the Docker container (and IPython) since polSARpro is only available in the form of a graphics interface for Windows or 32-bit Linux. The coherenecy matrix has the same eigenvalues and hence the same determinant as the covariance matrix, so that the hypothesis test described above can be applied unchanged. The rest of the processing takes place in the IPython notebook.</p>
 </li>
-<li><p>The matrix images are imported by MapReady for georeferencing. (Terrain correction with a DEM is not yet possible
-but will be included in a later commit.) The bash script <strong>mapready.sh</strong> automates the procedure. MapReady will generate the covariance/cohernecy matrix images in the form of co-registered GeoTiff files, one for each diagonal matrix element and two (real and imaginary parts) for each off-diagonal component.
+<li><p>The matrix images are imported by MapReady for georeferencing. Terrain correction with a DEM is not yet possible but will be included in a later commit. The bash script <strong>mapready.sh</strong> automates the procedure. MapReady will output the geocoded covariance/cohernecy matrix images in the form of co-registered GeoTiff files, one for each diagonal matrix element and two (real and imaginary parts) for each off-diagonal component.
 A python script <strong>ingest.py</strong> is called automatically to combine these files to a single  multi-band image in floating point format.</p>
 </li>
 <li><p>The ENL (equivalent number of looks) can (optionally) be estimated with the script <strong>enlml.py</strong>. A multivariate estimator is used as described by <a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=5071293&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F36%2F5291960%2F05071293.pdf%3Farnumber%3D5071293">Anfinsen et al. (2009)</a>.</p>
 </li>
-<li><p>Finally the change detection algorithm is invoked with the bash script <strong>wishart.py</strong>. This script calls the Python programs <strong>register.py</strong> to co-register the two images and then <strong>wishart.py</strong> to perform the pixel-wise hypothesis tests. The test statistics $-2\rho\log Q\le z$ and change probabilities ${\rm prob}(-2\rho\log Q\le z)$ are written to a two-band GeoTiff file. Additionally a change map showing changes at significance level 0.01 in red overlayed onto the span image is writen to a three-band (RGB) GeoTiff file.</p>
+<li><p>Finally the change detection algorithm is invoked with the bash script <strong>wishart.sh</strong>. This script calls the Python programs <strong>register.py</strong> to co-register the two images and then <strong>wishart.py</strong> to perform the pixel-wise hypothesis tests. The test statistics $-2\rho\log Q$ and change probabilities ${\rm prob}(-2\rho\log Q\le z)$ are written to a two-band GeoTiff file. Additionally a change map showing changes at significance level 0.01 in red overlayed onto the span image is writen to a three-band (RGB) GeoTiff file.</p>
 </li>
 </ol>
 
@@ -641,7 +636,9 @@ Multiband image is /sar/imagery/RS2_OK5491_PK71074_DK68879_FQ21_20100426_172459_
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The combined coherency matrix image is stored in <strong>polSAR.tif</strong> and  created from PolSARpro data with $4\times 3 = 12$ looks. This corresponds to a square pixel size of close to 12.5 meters. Before we can see the geocoded image, we have to enable Matplotlib within the notebook with the so-called <em>magic</em> command</p>
+<p>We see that the multi-look images were  created from PolSARpro data with $4\times 3 = 12$ looks.
+This corresponds to a square pixel size of close to $12.5\times 12.5$ meters. The combined coherency matrix image at this resolution is stored in <strong>polSAR.tif</strong>.</p>
+<p>Before we can see the geocoded image, we have to enable Matplotlib functionality within the notebook with the so-called <em>magic</em> command</p>
 
 </div>
 </div>
@@ -664,7 +661,7 @@ Multiband image is /sar/imagery/RS2_OK5491_PK71074_DK68879_FQ21_20100426_172459_
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We will use the Python script <strong>dispms.py</strong>. Here is the help:</p>
+<p>We will use the Python script <strong>dispms.py</strong> for displaying. Here is the help:</p>
 
 </div>
 </div>
@@ -11194,7 +11191,7 @@ jnMbrlByHMdxHMe5DVcoOY7jOI7j3Mb/AtzQ8/ZFmUAJAAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The polSAR scene was acquired over the city of Bonn, Germany (upper right hand corner with the Rhine river). The gray, featurless areas are mixed forest. We will run the <strong>enlml.py</strong> (step 3 in the processing chain) script on a spatial subset which includes forested land cover. The spatial subset is entered with the -d flag as the list</p>
+<p>The scene above was acquired over the city of Bonn, Germany (upper right hand corner with the Rhine river). The gray, featurless areas are mixed forest. We will run the <strong>enlml.py</strong> (step 3 in the processing chain) script on a spatial subset which includes forested land cover. The spatial subset is entered with the -d flag as the list</p>
 <p>[upper left column, upper left row, number of columns, number of rows]</p>
 <p>Here we choose -d [800,400,500,500]:</p>
 
@@ -16382,7 +16379,7 @@ KQDj7gAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The bright areas correspond to mixed forest (12 equivalent looks) and allow for the best estimate of the ENL, see 
+<p>The bright areas correspond to mixed forest (around 12 equivalent looks) and allow for the best estimate of the ENL, see 
 <a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=5071293&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F36%2F5291960%2F05071293.pdf%3Farnumber%3D5071293">Anfinsen et al. (2009)</a>.</p>
 <p>Next we geocode another of the Radarsat-2 images, the one acquired on May 20, 2010 (20100520):</p>
 
@@ -30643,7 +30640,7 @@ KqqooooqqqiibrCKBVlRRRVVVFFFFVXUDVaxICuqqKKKKqqoooq6wSoWZEUVVVRRRRVVVFE3WP8b
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Over the short interval of less than a motnth there are few significant changes, mostly in the agricultural areas near center right. Barge movements on the Rhine river are clealy eveident. Zooming in on the upper left hand corner we can see a flooded  sand quarry pit with two dredging arms that are in continual motion, giving rise to significant change signals. Small single pixel changes are also evident in settled regions (towns and villages).</p>
+<p>Over the short interval of less than a month separating the two acquisitions there are relatively few significant changes, mostly in the agricultural areas near center right and upper left. Barge movements on the Rhine river are clearly evident. Zooming in on the upper left hand corner we can see a flooded  sand quarry pit with two dredging arms that are in continual motion, giving rise to significant change signals.</p>
 
 </div>
 </div>
