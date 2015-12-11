@@ -212,9 +212,11 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>First of all, <a href="https://docs.docker.com/">install Docker</a>.</p>
-<p>To pull the image from Docker Hub and start the container, run</p>
+<p>To pull the image from Docker Hub and start the container on a Linux host, run</p>
 <p><b>sudo docker run -d -p 433:8888 -v yourImageFolder:/home/imagery --name=crc mort/crcdocker</b></p>
-<p>Here, <b>yourImageFolder</b> is the location of your images on the Linux host. You can stop and re-start the container with</p>
+<p>Here, <b>yourImageFolder</b> is the location of your images. If you are running on Windows, use</p>
+<p><b>sudo docker run -d -p 433:8888 -v //C/Users/yourImageFolder:/home/imagery --name=crc mort/crcdocker</b></p>
+<p>You can stop and re-start the container with</p>
 <p><b>sudo docker stop crc</b></p>
 <p><b>sudo docker start crc</b></p>
 <p>Point your browser to</p>
