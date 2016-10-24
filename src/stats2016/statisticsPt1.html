@@ -11824,7 +11824,7 @@ Academic Press.</p>
 <p>M. J. Canty (2014), <span>*Image Analysis, Classification and Change
 Detection in Remote Sensing*</span>, 3rd Ed., Taylor and Francis</p>
 <p><span>**Course Material:**</span></p>
-<p><a href="http://mortcanty.github.io/src/">http://mortcanty.github.io/src/</a></p>
+<p><a href="http://mortcanty.github.io/src/stats2016.html">http://mortcanty.github.io/src/stats2016.html</a></p>
 
 </div>
 </div>
@@ -11834,13 +11834,26 @@ Detection in Remote Sensing*</span>, 3rd Ed., Taylor and Francis</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Part-1.-Linear-Algebra-Basics">Part 1. Linear Algebra Basics<a class="anchor-link" href="#Part-1.-Linear-Algebra-Basics">&#182;</a></h2><p>The <span>*sum*</span> of two column vectors is given by
-$$\un x + \un y = \pmatrix{x_1\cr x_2}+\pmatrix{y_1\cr y_2}=\pmatrix{x_1+y_1\cr x_2+y_2},$$
-and their <span>*inner product*</span> by
-$$\un x^\top \un y =(x_1,x_2) \pmatrix{y_1\cr y_2}=x_1y_1+x_2y_2.$$ The
+<h3 id="Jupyter-notebook-environment-with-IPython">Jupyter notebook environment with IPython<a class="anchor-link" href="#Jupyter-notebook-environment-with-IPython">&#182;</a></h3><p>Download and install Anaconda2 (Python 2.7 version)</p>
+<p><a href="https://www.continuum.io/downloads">https://www.continuum.io/downloads</a></p>
+<p>In a command window enter</p>
+<p><strong>jupyter notebook</strong></p>
+<p>Point your browser (preferably Firefox) to <strong>localhost:8888</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Part-1.-Vectors-and-Matrices">Part 1. Vectors and Matrices<a class="anchor-link" href="#Part-1.-Vectors-and-Matrices">&#182;</a></h2><p>The <span>*sum*</span> of two column vectors is given by</p>
+$$\un x + \un y = \pmatrix{x_1\cr x_2}+\pmatrix{y_1\cr y_2}=\pmatrix{x_1+y_1\cr x_2+y_2},$$<p>and their <span>*inner product*</span> by</p>
+$$\un x^\top \un y =(x_1,x_2) \pmatrix{y_1\cr y_2}=x_1y_1+x_2y_2.$$<p>The
 <span>*length*</span> or <span>*(2-)norm*</span> of the vector $\un x$
-is $$\|\un x\| = \sqrt{x_1^2+x_2^2} = \sqrt{\un x^\top \un x}\ .$$</p>
-
+is</p>
+$$\|\un x\| = \sqrt{x_1^2+x_2^2} = \sqrt{\un x^\top \un x}\ .$$
 </div>
 </div>
 </div>
@@ -11849,8 +11862,8 @@ is $$\|\un x\| = \sqrt{x_1^2+x_2^2} = \sqrt{\un x^\top \un x}\ .$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The inner product can be written as
-$$\un x^\top \un y = \|\un x\|\|\un y\|\cos(\theta)$$</p>
+<p>The inner product can be written as</p>
+$$\un x^\top \un y = \|\un x\|\|\un y\|\cos(\theta)$$<p></p>
 <p>where $\theta$ is
 the angle subtended by $\un x$ and $\un y$. If $\theta=\pi/2$ then the
 vectors are <span>*orthogonal*</span>.</p>
@@ -11903,7 +11916,7 @@ $$\un x \un y^\top = \pmatrix{x_1\cr x_2} (y_1, y_2)= \pmatrix{x_1&0\cr x_2&0} \
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
@@ -11918,6 +11931,28 @@ $$\un x \un y^\top = \pmatrix{x_1\cr x_2} (y_1, y_2)= \pmatrix{x_1&0\cr x_2&0} \
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[ 0.08474233]
+ [ 0.69916474]
+ [ 0.37698698]]
+
+[[ 0.00718126  0.05924885  0.03194676]
+ [ 0.05924885  0.48883133  0.26357601]
+ [ 0.03194676  0.26357601  0.14211919]]
+
+5.92669364638e-36
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12099,10 +12134,22 @@ $$A = \un L\un L^\top.$$</p>
 <span>*singular matrix*</span>. If $\un A$ is
 <span>*nonsingular*</span>, then the equation</p>
 $$ \un A \un x = \un 0 $$<p></p>
-<p>only has the
-<span>*trivial solution*</span> $\un x=\un 0$. If $\un A$ is
+<p>only has the <span>*trivial solution*</span> $\un x=\un 0$. 
+Thus, if $\un A$ is non-singular and $\un A\un x = \un 0$,</p>
+$$
+\un A^{-1}\un A\un x = \un I\un x = \un x = \un 0.
+$$<p>If $\un A$ is
 singular, the equation has at least one <span>*nontrivial
 solution*</span> $\un x \ne \un 0$.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>A set of vectors $\un x_1\dots \un x_r$ is said to be <span>*linearly
 dependent*</span> if there exists a set of scalars $c_1\dots c_r$, not
 all of which are zero, such that $$\sum_{i=1}^r c_i\un x_i = \un 0.$$
@@ -12143,15 +12190,26 @@ $\un x=\un x^{(i)}$, $i=1\dots N$.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><span>**Example:**</span> A $2\times 2$ matrix eigenvalue problem, $\un A\un x = \lambda \un x$,
-The characteristic equation is
-$$(a_{11}-\lambda)(a_{22}-\lambda)-a^2_{12} = 0.$$ This is a quadratic
-equation in $\lambda$ with solutions $$\eqalign{
+The characteristic equation is</p>
+$$(a_{11}-\lambda)(a_{22}-\lambda)-a^2_{12} = 0.$$<p></p>
+<p>This is a quadratic
+equation in $\lambda$ with solutions</p>
+$$\eqalign{
 \lambda^{(1)} & = {1\over 2}\left( a_{11}+a_{22} +\sqrt{(a_{11}+a_{22})^2-4(a_{11}a_{22}-a_{12}^2)}\right)\cr
 \lambda^{(2)} & = {1\over 2}\left( a_{11}+a_{22} -\sqrt{(a_{11}+a_{22})^2-4(a_{11}a_{22}-a_{12}^2)}\right).}$$
-Thus there are two eigenvalues and, correspondingly, two eigenvectors
-$$\un x^{(1)},\quad\un x^{(2)}.$$ The eigenvectors can be obtained by
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Thus there are two eigenvalues and, correspondingly, two eigenvectors</p>
+$$\un x^{(1)},\quad\un x^{(2)}.$$<p></p>
+<p>The eigenvectors can be obtained by
 first substituting $\lambda^{(1)}$ and then $\lambda^{(2)}$ into
-Equation (2) and solving for $x_1$ and $x_2$ each time.</p>
+Equation (7) and solving for $x_1$ and $x_2$ each time.</p>
 <p><span>**Exercise 2:**</span> Show that the eigenvectors are orthogonal,
 $$(\un x^{(1)})^\top \un x^{(2)} = 0.$$</p>
 
@@ -12163,8 +12221,8 @@ $$(\un x^{(1)})^\top \un x^{(2)} = 0.$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The eigenvectors can be always chosen to have unit length,
-$$\|\un x^{(1)}\| = \|\un x^{(2)}\| = 1.$$ 0.5cm The matrix formed by
+<p>The eigenvectors can be always chosen to have unit length,</p>
+$$\|\un x^{(1)}\| = \|\un x^{(2)}\| = 1.$$<p>The matrix formed by
 two eigenvectors, for instance
 $$\un U =(\un x^{(1)},\un x^{(2)}) = \pmatrix{x^{(1)}_1 & x^{(2)}_1\cr x^{(1)}_2 & x^{(2)}_2},$$
 is orthonormal: $$\un U^\top\un U = \un I$$ and is said to
@@ -12185,6 +12243,8 @@ $$\un U^\top \un A \un U = \pmatrix{\lambda^{(1)} & 0\cr 0 & \lambda^{(2)}} = \b
 <span class="k">print</span> <span class="n">U</span>
 <span class="k">print</span>
 <span class="k">print</span> <span class="n">U</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="n">U</span>
+<span class="k">print</span>
+<span class="k">print</span> <span class="n">U</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="n">S</span><span class="o">*</span><span class="n">U</span>
 </pre></div>
 
 </div>
@@ -12199,12 +12259,15 @@ $$\un U^\top \un A \un U = \pmatrix{\lambda^{(1)} & 0\cr 0 & \lambda^{(2)}} = \b
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><span>**Singular value decomposition (SVD)**</span></p>
 <p>Simply by rewriting (8), we get a special form of <span>*singular value
-decomposition*</span> (SVD) for symmetric matrices:
-$$\un A = \un U\bf\Lambda\un U^\top.$$ This says that any symmetric matrix
+decomposition*</span> (SVD) for symmetric matrices:</p>
+$$\un A = \un U\bf\Lambda\un U^\top.$$<p></p>
+<p>This says that any symmetric matrix
 $\un A$ can be factored into the product of an orthonormal matrix
 $\un U$ times a diagonal matrix $\bf\Lambda$ times the transpose of $\un U$
-(also called the <span>*eigen-decomposition of $\un A$*</span>).</p>
-
+(also called the <span>*eigen-decomposition of $\un A$*</span>).  It can be written in the form</p>
+$$
+\un A = \sum_{i=1}^n \lambda_i\un x^{(i)}\un x^{(i)\top}.
+$$
 </div>
 </div>
 </div>
@@ -12213,11 +12276,13 @@ $\un U$ times a diagonal matrix $\bf\Lambda$ times the transpose of $\un U$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The SVD of a general $m\times n$ matrix $\un A$ with $m>n$ is
-$$\un A = \un U\un W \un V^\top$$ where $\un U$ is $m\times n$ with
-$\un U^\top\un U = \un I_n$, $$\un W = \pmatrix{w_1  & \cdots & 0 \cr
+<p>The SVD of a general $m\times n$ matrix $\un A$ with $m>n$ is</p>
+$$\un A = \un U\un W \un V^\top$$<p>where $\un U$ is $m\times n$ with
+$\un U^\top\un U = \un I_n$,</p>
+$$\un W = \pmatrix{w_1  & \cdots & 0 \cr
                  \vdots  &\vdots &\vdots\cr
-                 0  &\cdots & w_n}$$ and $\un V$ is $n\times n$ with
+                 0  &\cdots & w_n}$$<p></p>
+<p>and $\un V$ is $n\times n$ with
 $\un V^\top\un V = \un V\un V^\top = \un I_n$</p>
 
 </div>
@@ -12230,11 +12295,13 @@ $\un V^\top\un V = \un V\un V^\top = \un I_n$</p>
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">U</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">U</span>
+<span class="k">print</span>
 <span class="k">print</span> <span class="n">w</span>
 <span class="c1"># Singular matrix</span>
 <span class="n">U</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
 <span class="k">print</span>
 <span class="k">print</span> <span class="n">U</span>
+<span class="k">print</span>
 <span class="k">print</span> <span class="n">w</span>
 </pre></div>
 
@@ -12249,22 +12316,19 @@ $\un V^\top\un V = \un V\un V^\top = \un I_n$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If $\un A$ is singular and we order the eigenvalues and eigenvectors in order of decreasing eigenvalue, then the
-eigendecomposition reads
+eigendecomposition reads</p>
 $$
-\un A = \sum_{i=1}^r \lambda_i\un u^{(i)}\un u^{(i)\top},
-$$
-where $r$ is the number of nonzero eigenvalues.  Accordingly,
+\un A = \sum_{i=1}^r \lambda_i\un x^{(i)}\un x^{(i)\top},
+$$<p>where $r$ is the number of nonzero eigenvalues.  Accordingly,</p>
 $$
 \un A = \un {U_r}\bf\Lambda_r\un U_r^\top,
+$$<p>where</p>
 $$
-where
-$$
-\un U_r = (\un {u^{(1)}},\dots , \un u^{(r)}),\quad \bf\Lambda = \pmatrix{\lambda_1 & 0         & \cdots & 0 \cr
+\un U_r = (\un {x}^{(1)},\dots , \un x^{(r)}),\quad \bf\Lambda = \pmatrix{\lambda_1 & 0         & \cdots & 0 \cr
                                                                         0      & \lambda_2 & \cdots & 0 \cr
                                                                         \vdots &   \vdots  & \ddots & \vdots \cr
                                                                         0      &  0        & \cdots & \lambda_r} .
-$$</p>
-
+$$
 </div>
 </div>
 </div>
@@ -12273,11 +12337,10 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The <em>pseudoinverse</em> of the symmetric, singular matrix $\un A$ is defined as
+<p>The <em>pseudoinverse</em> of the symmetric, singular matrix $\un A$ is defined as</p>
 $$
 \un A^+ = \un U_r\bf\Lambda_r^{-1}\un U_r^\top.
-$$</p>
-
+$$
 </div>
 </div>
 </div>
@@ -12301,11 +12364,12 @@ $$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Suppose $\un A$ is a $N\times N$ symmetric matrix. Then its eigenvectors
-$\un u_i$, $i=1\dots N$, are orthogonal and any $N$-component vector
-$\un x$ can be expressed as a linear combination of them,
-$$\un x = \sum_{i=1}^N\beta_i\un u_i.$$ But then we have
-$$\un x^\top\un A\un x = \un x^\top\sum_i\beta_i\lambda_i\un u_i
-=\sum_i\beta_i^2\lambda_i,$$ where $\lambda_i$, $i=1\dots N$, are the
+$\un x_i$, $i=1\dots N$, are orthogonal and any $N$-component vector
+$\un u$ can be expressed as a linear combination of them,</p>
+$$\un u = \sum_{i=1}^N\beta_i\un x_i.$$<p>But then we have</p>
+$$\un u^\top\un A\un u = \un u^\top\sum_i\beta_i\lambda_i\un x_i
+=\sum_i\beta_i^2\lambda_i,$$<p></p>
+<p>where $\lambda_i$, $i=1\dots N$, are the
 eigenvalues of $\un A$.</p>
 <p>So $\un A$ is positive definite if and
 only if all of its eigenvalues are positive.</p>
@@ -12320,15 +12384,13 @@ only if all of its eigenvalues are positive.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><span>**Lagrange multipliers**</span></p>
 <p>A <span>*vector partial derivative*</span> is written in the form
-${\partial\over\partial\un x}$. For instance in two dimensions:
+${\partial\over\partial\un x}$. For instance in two dimensions:</p>
 $${\partial\over \partial\un x} =
-\pmatrix{1\cr 0}{\partial\over \partial x_1}+\pmatrix{0\cr 1}{\partial\over \partial x_2}.$$
-This operator (also called the <span>*gradient*</span>) arranges the
+\pmatrix{1\cr 0}{\partial\over \partial x_1}+\pmatrix{0\cr 1}{\partial\over \partial x_2}.$$<p>This operator (also called the <span>*gradient*</span>) arranges the
 partial derivatives of any scalar function of the vector $\un x$ with
-respect to each of its components into a column vector, e.g.,
+respect to each of its components into a column vector, e.g.,</p>
 $${\partial f(\un x)\over\partial\un x}=\pmatrix{\partial f(\un x)\over\partial x_1\cr
-                                               {\partial f(\un x)\over\partial x_2}}.$$</p>
-
+                                               {\partial f(\un x)\over\partial x_2}}.$$
 </div>
 </div>
 </div>
@@ -12368,6 +12430,26 @@ $${\partial\over\partial \un x}(\un x^\top \un A \un x)=\un A \un x+\un A^\top\u
 $${\partial\over\partial \un x}(\un x^\top \un A \un x)=2\un A \un x.$$<p><span>**Exercise 3:**</span> What is
 ${\partial\over\partial\un x} {1 \over \un x^\top\un A \un y}$?</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Suppose $x^*$ is a stationary point of the function $f(x)$, by which is meant that its
+first derivative vanishes at that point:</p>
+$$
+{d\over dx}f(x^*)={d\over dx}f(x)\Big|_{x=x^*}= 0;
+$$<p>Then $f(x^*)$ is a local minimum if the second derivative at
+$x^*$ is positive,</p>
+$$
+{d^2\over dx^2}f(x^*)>0.
+$$<p>This is easliy seen from the Taylor expnsion fo $f(x)$ about $x^*$:</p>
+$$
+f(x)= f(x^*)+(x-x^*){d\over dx}f(x^*)+{1\over 2}(x-x^*)^2{d^2\over dx^2}f(x^*)+\dots\ .
+$$
 </div>
 </div>
 </div>
@@ -12485,19 +12567,6 @@ maximum eigenvalue.</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
