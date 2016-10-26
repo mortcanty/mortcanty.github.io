@@ -11940,15 +11940,15 @@ $$\un x \un y^\top = \pmatrix{x_1\cr x_2} (y_1, y_2)= \pmatrix{x_1&0\cr x_2&0} \
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[[ 0.08474233]
- [ 0.69916474]
- [ 0.37698698]]
+<pre>[[ 0.15182713]
+ [ 0.89933887]
+ [ 0.16408064]]
 
-[[ 0.00718126  0.05924885  0.03194676]
- [ 0.05924885  0.48883133  0.26357601]
- [ 0.03194676  0.26357601  0.14211919]]
+[[ 0.02305148  0.13654404  0.02491189]
+ [ 0.13654404  0.8088104   0.1475641 ]
+ [ 0.02491189  0.1475641   0.02692246]]
 
-5.92669364638e-36
+1.49949129866e-36
 </pre>
 </div>
 </div>
@@ -12050,7 +12050,7 @@ $$\eqalign{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="n">mat</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
@@ -12062,16 +12062,49 @@ $$\eqalign{
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[  1.00000000e+00   5.24840982e-16   8.15064721e-16]
+ [ -7.80428554e-16   1.00000000e+00  -1.10757743e-15]
+ [  4.55400836e-16   1.60755218e-16   1.00000000e+00]]
+3.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">B</span><span class="o">.</span><span class="n">I</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[ -6.80726257e+17  -5.24023762e+16   9.17111295e+17]
+ [  1.07303704e+17  -1.81151001e+16   0.00000000e+00]
+ [  4.17497337e+16   1.47779263e+17  -8.48621609e+17]]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12106,7 +12139,7 @@ $$A = \un L\un L^\top.$$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># symmetric positive definite matrix</span>
@@ -12121,6 +12154,30 @@ $$A = \un L\un L^\top.$$</p>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[ 0.2955777   0.21156981  0.26250919]
+ [ 0.21156981  0.28663347  0.22788457]
+ [ 0.26250919  0.22788457  0.38856718]]
+
+[[ 0.54367058  0.          0.        ]
+ [ 0.38915075  0.36768896  0.        ]
+ [ 0.48284605  0.10874591  0.37894749]]
+
+[[ 0.2955777   0.21156981  0.26250919]
+ [ 0.21156981  0.28663347  0.22788457]
+ [ 0.26250919  0.22788457  0.38856718]]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12234,7 +12291,7 @@ $$\un U^\top \un A \un U = \pmatrix{\lambda^{(1)} & 0\cr 0 & \lambda^{(2)}} = \b
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">lmda</span><span class="p">,</span><span class="n">U</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
@@ -12248,6 +12305,32 @@ $$\un U^\top \un A \un U = \pmatrix{\lambda^{(1)} & 0\cr 0 & \lambda^{(2)}} = \b
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[ 0.79756094  0.06911213  0.10410528]
+
+[[ 0.5575567   0.82991395 -0.01932255]
+ [ 0.51962908 -0.36706276 -0.77152482]
+ [ 0.6473918  -0.42012827  0.63590573]]
+
+[[  1.00000000e+00   4.31312496e-16   1.95479849e-16]
+ [  4.31312496e-16   1.00000000e+00   1.78001110e-15]
+ [  1.95479849e-16   1.78001110e-15   1.00000000e+00]]
+
+[[  7.97560943e-01   4.89601007e-18  -9.14381372e-18]
+ [ -1.06840142e-17   6.91121305e-02   2.18563622e-16]
+ [ -2.73007310e-17   2.13612137e-16   1.04105276e-01]]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12290,7 +12373,7 @@ $\un V^\top\un V = \un V\un V^\top = \un I_n$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">U</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
@@ -12306,6 +12389,30 @@ $\un V^\top\un V = \un V\un V^\top = \un I_n$</p>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[-0.5575567   0.01932255  0.82991395]
+ [-0.51962908  0.77152482 -0.36706276]
+ [-0.6473918  -0.63590573 -0.42012827]]
+
+[ 0.79756094  0.10410528  0.06911213]
+
+[[-0.16383524  0.98578541 -0.03721735]
+ [-0.97046819 -0.16783137 -0.17327468]
+ [-0.17705789  0.00772975  0.98417008]]
+
+[  8.58784335e-01   1.91988506e-17   1.41022038e-18]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12346,7 +12453,7 @@ $$
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">U</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
@@ -12354,6 +12461,23 @@ $$
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>pseudo inverse =
+ [[ 0.03125579  0.18514182  0.03377836]
+ [ 0.18514182  1.0966764   0.20008405]
+ [ 0.03377836  0.20008405  0.0365045 ]]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
