@@ -11800,7 +11800,7 @@ div#notebook {
 </li>
 <li><p>Multiple linear regression, Kalman filter</p>
 </li>
-<li><p>Hypothesis Testing</p>
+<li><p>Hypothesis testing</p>
 </li>
 <li><p>Data assimilation</p>
 </li>
@@ -11867,6 +11867,7 @@ $$\un x^\top \un y = \|\un x\|\|\un y\|\cos(\theta)$$<p></p>
 <p>where $\theta$ is
 the angle subtended by $\un x$ and $\un y$. If $\theta=\pi/2$ then the
 vectors are <span>*orthogonal*</span>.</p>
+<p><img src="fig14.png" width = 600 heoight = 600></p>
 
 </div>
 </div>
@@ -11940,15 +11941,15 @@ $$\un x \un y^\top = \pmatrix{x_1\cr x_2} (y_1, y_2)= \pmatrix{x_1&0\cr x_2&0} \
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[[ 0.15182713]
- [ 0.89933887]
- [ 0.16408064]]
+<pre>[[ 0.3860485 ]
+ [ 0.14471887]
+ [ 0.16162092]]
 
-[[ 0.02305148  0.13654404  0.02491189]
- [ 0.13654404  0.8088104   0.1475641 ]
- [ 0.02491189  0.1475641   0.02692246]]
+[[ 0.14903345  0.0558685   0.06239351]
+ [ 0.0558685   0.02094355  0.0233896 ]
+ [ 0.06239351  0.0233896   0.02612132]]
 
-1.49949129866e-36
+-3.75144182929e-38
 </pre>
 </div>
 </div>
@@ -12068,9 +12069,9 @@ $$\eqalign{
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[[  1.00000000e+00   5.24840982e-16   8.15064721e-16]
- [ -7.80428554e-16   1.00000000e+00  -1.10757743e-15]
- [  4.55400836e-16   1.60755218e-16   1.00000000e+00]]
+<pre>[[  1.00000000e+00  -7.86079002e-17  -1.11975035e-16]
+ [  8.93952029e-17   1.00000000e+00   2.79320690e-16]
+ [ -7.44800763e-17   4.32583335e-17   1.00000000e+00]]
 3.0
 </pre>
 </div>
@@ -12098,9 +12099,9 @@ $$\eqalign{
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[[ -6.80726257e+17  -5.24023762e+16   9.17111295e+17]
- [  1.07303704e+17  -1.81151001e+16   0.00000000e+00]
- [  4.17497337e+16   1.47779263e+17  -8.48621609e+17]]
+<pre>[[ -2.48612733e+16   1.07341737e+18  -9.01777393e+17]
+ [  6.91393290e+17  -1.84434380e+18  -0.00000000e+00]
+ [ -5.59704760e+17  -9.12504570e+17   2.15398984e+18]]
 </pre>
 </div>
 </div>
@@ -12130,9 +12131,18 @@ form*</span>.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><span>**Exercise 1:**</span> Prove with the help of (6) that
 $\un x^\top\un A\un x = {\rm tr}(\un A \un x\un x^\top)$.</p>
-<p><span>*Cholesky decomposition*</span>: If $\un A$ is symmetric positive
+<p>Hint: Start with
+$$
+y = \un x^\top\un A\un x,
+$$
+multiply from the left and right with $\un x$ and $\un x^\top$,
+$$
+\un x y \un x^\top = \un x\un x^\top\un A\un x\un x^\top,
+$$
+and note that, since $y$ is a scalar, the LHS can be written $\un x  \un x^\top y$.</p>
+<p><strong>Cholesky decomposition</strong>: If $\un A$ is symmetric positive
 definite, there exists a lower triangular matrix $\un L$ such that
-$$A = \un L\un L^\top.$$</p>
+$$\un A = \un L\un L^\top.$$</p>
 
 </div>
 </div>
@@ -12163,17 +12173,17 @@ $$A = \un L\un L^\top.$$</p>
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[[ 0.2955777   0.21156981  0.26250919]
- [ 0.21156981  0.28663347  0.22788457]
- [ 0.26250919  0.22788457  0.38856718]]
+<pre>[[ 0.3630402   0.26191309  0.28761121]
+ [ 0.26191309  0.32861809  0.25951777]
+ [ 0.28761121  0.25951777  0.3711582 ]]
 
-[[ 0.54367058  0.          0.        ]
- [ 0.38915075  0.36768896  0.        ]
- [ 0.48284605  0.10874591  0.37894749]]
+[[ 0.60252817  0.          0.        ]
+ [ 0.4346902   0.3737145   0.        ]
+ [ 0.47734069  0.13920374  0.3520318 ]]
 
-[[ 0.2955777   0.21156981  0.26250919]
- [ 0.21156981  0.28663347  0.22788457]
- [ 0.26250919  0.22788457  0.38856718]]
+[[ 0.3630402   0.26191309  0.28761121]
+ [ 0.26191309  0.32861809  0.25951777]
+ [ 0.28761121  0.25951777  0.3711582 ]]
 </pre>
 </div>
 </div>
@@ -12246,7 +12256,7 @@ $\un x=\un x^{(i)}$, $i=1\dots N$.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><span>**Example:**</span> A $2\times 2$ matrix eigenvalue problem, $\un A\un x = \lambda \un x$,
+<p><span>**Example:**</span> A $2\times 2$ matrix eigenvalue problem, $\un A\un x = \lambda \un x$.
 The characteristic equation is</p>
 $$(a_{11}-\lambda)(a_{22}-\lambda)-a^2_{12} = 0.$$<p></p>
 <p>This is a quadratic
@@ -12314,19 +12324,19 @@ $$\un U^\top \un A \un U = \pmatrix{\lambda^{(1)} & 0\cr 0 & \lambda^{(2)}} = \b
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[ 0.79756094  0.06911213  0.10410528]
+<pre>[ 0.89482078  0.07820002  0.08979569]
 
-[[ 0.5575567   0.82991395 -0.01932255]
- [ 0.51962908 -0.36706276 -0.77152482]
- [ 0.6473918  -0.42012827  0.63590573]]
+[[ 0.59039778  0.79684008  0.12836024]
+ [ 0.54568212 -0.27690209 -0.79092114]
+ [ 0.59469445 -0.53700198  0.59830376]]
 
-[[  1.00000000e+00   4.31312496e-16   1.95479849e-16]
- [  4.31312496e-16   1.00000000e+00   1.78001110e-15]
- [  1.95479849e-16   1.78001110e-15   1.00000000e+00]]
+[[  1.00000000e+00   5.01338207e-17   1.16485150e-16]
+ [  5.01338207e-17   1.00000000e+00  -4.96955456e-15]
+ [  1.16485150e-16  -4.96955456e-15   1.00000000e+00]]
 
-[[  7.97560943e-01   4.89601007e-18  -9.14381372e-18]
- [ -1.06840142e-17   6.91121305e-02   2.18563622e-16]
- [ -2.73007310e-17   2.13612137e-16   1.04105276e-01]]
+[[  8.94820784e-01   1.57752446e-17   5.84431399e-17]
+ [  4.82286377e-17   7.82000157e-02  -4.43556613e-16]
+ [  4.50094104e-17  -4.47257593e-16   8.97956913e-02]]
 </pre>
 </div>
 </div>
@@ -12398,17 +12408,17 @@ $\un V^\top\un V = \un V\un V^\top = \un I_n$</p>
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[[-0.5575567   0.01932255  0.82991395]
- [-0.51962908  0.77152482 -0.36706276]
- [-0.6473918  -0.63590573 -0.42012827]]
+<pre>[[-0.59039778  0.12836024 -0.79684008]
+ [-0.54568212 -0.79092114  0.27690209]
+ [-0.59469445  0.59830376  0.53700198]]
 
-[ 0.79756094  0.10410528  0.06911213]
+[ 0.89482078  0.08979569  0.07820002]
 
-[[-0.16383524  0.98578541 -0.03721735]
- [-0.97046819 -0.16783137 -0.17327468]
- [-0.17705789  0.00772975  0.98417008]]
+[[-0.87177606  0.48711743  0.0521834 ]
+ [-0.32680464 -0.49888006 -0.80269385]
+ [-0.36497291 -0.71682306  0.59410393]]
 
-[  8.58784335e-01   1.91988506e-17   1.41022038e-18]
+[  1.96098318e-01   5.43071062e-18   6.01670419e-19]
 </pre>
 </div>
 </div>
@@ -12471,9 +12481,9 @@ $$
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>pseudo inverse =
- [[ 0.03125579  0.18514182  0.03377836]
- [ 0.18514182  1.0966764   0.20008405]
- [ 0.03377836  0.20008405  0.0365045 ]]
+ [[ 3.87557377  1.45284502  1.62252613]
+ [ 1.45284502  0.54463127  0.60824001]
+ [ 1.62252613  0.60824001  0.67927776]]
 </pre>
 </div>
 </div>
@@ -12490,8 +12500,9 @@ $$
 <p>Suppose $\un A$ is a $N\times N$ symmetric matrix. Then its eigenvectors
 $\un x_i$, $i=1\dots N$, are orthogonal and any $N$-component vector
 $\un u$ can be expressed as a linear combination of them,</p>
-$$\un u = \sum_{i=1}^N\beta_i\un x_i.$$<p>But then we have</p>
+$$\un u = \sum_{j=1}^N\beta_j\un x_j.$$<p>But then we have</p>
 $$\un u^\top\un A\un u = \un u^\top\sum_i\beta_i\lambda_i\un x_i
+= \sum_{j=1}^N\beta_j\un x_j^\top\sum_i\beta_i\lambda_i\un x_i
 =\sum_i\beta_i^2\lambda_i,$$<p></p>
 <p>where $\lambda_i$, $i=1\dots N$, are the
 eigenvalues of $\un A$.</p>
@@ -12564,6 +12575,7 @@ ${\partial\over\partial\un x} {1 \over \un x^\top\un A \un y}$?</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Suppose $x^*$ is a stationary point of the function $f(x)$, by which is meant that its
 first derivative vanishes at that point:</p>
+<p><img src="fig15.png"></p>
 $$
 {d\over dx}f(x^*)={d\over dx}f(x)\Big|_{x=x^*}= 0;
 $$<p>Then $f(x^*)$ is a local minimum if the second derivative at
