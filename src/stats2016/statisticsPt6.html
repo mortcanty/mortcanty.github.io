@@ -11782,6 +11782,15 @@ generally in the form</p>
 $$Y(i) = w_o + \sum_{j=1}^{N} w_jx_j(i) + R(i),\quad i=1\dots n,\tag 1$$<p>relating $n$ measurements of the $N$ independent variables
 $x_1\dots x_N$ to a measured dependent variable $Y$ via the parameters
 $w_0,w_1\dots w_N$.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Equivalently, in vector notation we can write</p>
 $$Y(i) = \un w^\top\un x(i) + R(i),\quad i=1\dots n,$$<p></p>
 <p>where
@@ -11822,11 +11831,17 @@ $$\bf\Sigma_R = \langle\un R \un R^\top\rangle = \sigma^2\un I.$$<p>The identity
 $$z(\un w) =\sum_{i=1}^n\left[{y(i)-\un w^\top\un x(i)\over \sigma}\right]^2
 ={1\over\sigma^2}(\un y-\dmX\un w)^\top(\un y-\dmX\un w).$$<p>The goodness of fit function is minimized by solving the equations</p>
 $${\partial z(\un w)\over\partial w_k}=0,\quad k=0\dots N.$$<p></p>
-<p>Using the
-rules for vector differentiation we obtain the so-called <span>*normal
+<p>Expanding:</p>
+$$
+z(\un w) = {1\over\sigma^2}(\un y^\top\un y-\un y^\top\dmX\un w-\un w^\top\dmX\un y+\un w^\top\dmX^\top\dmX\un w),
+$$<p>so that, using the
+rules for vector differentiation,</p>
+$$
+{\partial z(\un w)\over \partial\un w} = 0 =
+{1\over\sigma^2}(-\dmX^\top\un y -\dmX^\top \un y + 2\dmX^\top\dmX\un w)
+$$<p>from which we obtain the so-called <span>*normal
 equation*</span>,</p>
-$$\dmX^\top \un y = (\dmX^\top \dmX) \un w\ .$$<p><strong>Exercise 1:</strong> Show this.</p>
-
+$$\dmX^\top \un y = (\dmX^\top \dmX) \un w\ .$$
 </div>
 </div>
 </div>
@@ -11842,9 +11857,6 @@ $$<p>The matrix</p>
 $$
 \dmX^+ =(\dmX^\top \dmX)^{-1} \dmX^\top\tag 1
 $$<p>is  the pseudoinverse of the data matrix $\dmX$.</p>
-<p>In terms of the singular value decomposition (SVD) of $\dmX$, namely $\dmX = \un U\bf\Lambda\un V^\top$,
-the pseudoinverse is $\dmX^+ = \un V\bf\Lambda^{-1}\un U^\top$, generalizing the definition for a symmetric square matrix given in Part 1.</p>
-<p><strong>Exercise 2:</strong> Show this.</p>
 
 </div>
 </div>
@@ -11868,7 +11880,7 @@ $$\eqalign{
 &= \sigma^2\dmX^+ {\dmX^+}^\top. }
 $$<p>Again with Equation (1) we have finally</p>
 $$
-\bf\Sigma_w \approx \sigma^2(\dmX^\top \dmX)^{-1}.
+\bf\Sigma_w \approx \sigma^2(\dmX^\top \dmX)^{-1} \dmX^\top \dmX((\dmX^\top\dmX)^{-1})^\top =    \sigma^2(\dmX^\top \dmX)^{-1}.
 $$
 </div>
 </div>
@@ -11919,9 +11931,9 @@ $$
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>a = 1.037005, b = 1.986815, s2 = 0.002230
+<pre>a = 1.027349, b = 1.949169, s2 = 0.002255
 
-[[ 1.03700538  1.98681547]]
+[[ 1.02734885  1.94916912]]
 
 [[ 0.00079403 -0.00118806]
  [-0.00118806  0.00237612]]
