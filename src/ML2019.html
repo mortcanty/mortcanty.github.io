@@ -1,0 +1,39 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<style type="text/css">
+h2 { color: green }
+h3 {color: green}
+</style>
+<head>
+<title>Machine Learning Course 2019</title>
+<meta name="author" content="mort canty">
+</head>
+
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" alink="#00FF00" vlink="#FF0000">
+
+<h2>Machine Learning Course 2019</h2> 
+
+Pull and/or run the container for the first time with<br/><br/>
+    docker run -d -p 443:8888 -p 6006:6006 -v <my_image_folder>:/home/myimagery/ --name=crc4 mort/crc4docker
+<br/><br/>
+This maps the host directory my_image_folder to the container directory /home/myimagery/ and runs the
+container in detached mode. 
+<br/><br/>
+Point your browser to http://localhost:443 to see the Jupyter home page and open notebook <b>zfl2019.ipynb</b>.
+
+In order to use Earth Engine scripts, you must authenticate. From the home page  open a local terminal and enter
+ <p>   
+    earthengine authenticate
+</p>    
+and follow the instructions. This adds authentication information to the container and only has to be done once.  <br/><br/>   
+Stop the container with
+<p>
+     docker stop crc4  
+</p>    
+Re-start with
+<p>
+    docker start crc4    
+</p>
+<h4><a href="zfl2019.html"> HTML Version of the course Jupyter notebook</a></h4>
+
+
+</body>
